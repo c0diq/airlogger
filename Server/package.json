@@ -1,0 +1,21 @@
+{ "name" : "airlogger"
+, "version" : "0.0.1"
+, "description" : "A simple remote console log viewer for iOS"
+, "author": "Sylvain Rebaud <c0diq@yahoo.com>"
+, "main": "./airlogger"
+, "licenses": [
+    { "type": "MIT"
+    , "url": "http://github.com/c0diq/airlogger.node.js/blob/master/LICENSE"
+    }
+  ]
+, "bugs": { "url": "http://github.com/c0diq/airlogger.node.js/issues" }
+, "repository":
+  { "type": "git"
+  , "url":  "http://github.com/c0diq/airlogger.node.js"
+  }
+, "dependencies":
+  { "fanout": ">=0.3.2"
+  , "mdns": ">=0.0.3"
+  }
+}
+

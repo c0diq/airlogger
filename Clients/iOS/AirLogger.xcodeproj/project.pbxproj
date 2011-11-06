@@ -1,0 +1,317 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E407EFB314168A980091B02F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E407EFB214168A980091B02F /* UIKit.framework */; };
+		E407EFB514168A980091B02F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E407EFB414168A980091B02F /* Foundation.framework */; };
+		E407EFB714168A990091B02F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E407EFB614168A980091B02F /* CoreGraphics.framework */; };
+		E407EFBF14168A990091B02F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E407EFBE14168A990091B02F /* main.m */; };
+		E407EFC314168A990091B02F /* AirLoggerAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = E407EFC214168A990091B02F /* AirLoggerAppDelegate.mm */; };
+		E407F044141699220091B02F /* sound.caf in Resources */ = {isa = PBXBuildFile; fileRef = E407F043141699220091B02F /* sound.caf */; };
+		E407F04614169D4D0091B02F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E407F04514169D4C0091B02F /* AVFoundation.framework */; };
+		E407F04814169D510091B02F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E407F04714169D510091B02F /* AudioToolbox.framework */; };
+		E43FF38F1417597300B9F8F3 /* backNavArrowButton.png in Resources */ = {isa = PBXBuildFile; fileRef = E43FF38E1417597300B9F8F3 /* backNavArrowButton.png */; };
+		E497ADD71464557300FB43C1 /* BrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E497ADD61464557300FB43C1 /* BrowserViewController.m */; };
+		E497ADDA1464567200FB43C1 /* Picker.m in Sources */ = {isa = PBXBuildFile; fileRef = E497ADD91464567100FB43C1 /* Picker.m */; };
+		E497ADED1467119B00FB43C1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E497ADE91467119B00FB43C1 /* InfoPlist.strings */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E407EFAE14168A980091B02F /* AirLogger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirLogger.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E407EFB214168A980091B02F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E407EFB414168A980091B02F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E407EFB614168A980091B02F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E407EFBA14168A990091B02F /* AirLogger-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "AirLogger-Info.plist"; path = "../AirLogger-Info.plist"; sourceTree = "<group>"; };
+		E407EFBE14168A990091B02F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E407EFC014168A990091B02F /* AirLogger-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AirLogger-Prefix.pch"; sourceTree = "<group>"; };
+		E407EFC114168A990091B02F /* AirLoggerAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AirLoggerAppDelegate.h; sourceTree = "<group>"; };
+		E407EFC214168A990091B02F /* AirLoggerAppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AirLoggerAppDelegate.mm; sourceTree = "<group>"; };
+		E407F043141699220091B02F /* sound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sound.caf; sourceTree = "<group>"; };
+		E407F04514169D4C0091B02F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		E407F04714169D510091B02F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		E43FF38E1417597300B9F8F3 /* backNavArrowButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backNavArrowButton.png; sourceTree = "<group>"; };
+		E497ADD51464557300FB43C1 /* BrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowserViewController.h; sourceTree = "<group>"; };
+		E497ADD61464557300FB43C1 /* BrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowserViewController.m; sourceTree = "<group>"; };
+		E497ADD81464567100FB43C1 /* Picker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Picker.h; sourceTree = "<group>"; };
+		E497ADD91464567100FB43C1 /* Picker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Picker.m; sourceTree = "<group>"; };
+		E497ADEA1467119B00FB43C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E407EFAB14168A980091B02F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E407F04814169D510091B02F /* AudioToolbox.framework in Frameworks */,
+				E407F04614169D4D0091B02F /* AVFoundation.framework in Frameworks */,
+				E407EFB314168A980091B02F /* UIKit.framework in Frameworks */,
+				E407EFB514168A980091B02F /* Foundation.framework in Frameworks */,
+				E407EFB714168A990091B02F /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E407EFA314168A980091B02F = {
+			isa = PBXGroup;
+			children = (
+				E407EFB914168A990091B02F /* Supporting Files */,
+				E407F04714169D510091B02F /* AudioToolbox.framework */,
+				E407F04514169D4C0091B02F /* AVFoundation.framework */,
+				E407F0421416990F0091B02F /* Resources */,
+				E407EFB814168A990091B02F /* Classes */,
+				E407EFB114168A980091B02F /* Frameworks */,
+				E407EFAF14168A980091B02F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E407EFAF14168A980091B02F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E407EFAE14168A980091B02F /* AirLogger.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E407EFB114168A980091B02F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E407EFB214168A980091B02F /* UIKit.framework */,
+				E407EFB414168A980091B02F /* Foundation.framework */,
+				E407EFB614168A980091B02F /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E407EFB814168A990091B02F /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				E497ADD81464567100FB43C1 /* Picker.h */,
+				E497ADD91464567100FB43C1 /* Picker.m */,
+				E497ADD51464557300FB43C1 /* BrowserViewController.h */,
+				E497ADD61464557300FB43C1 /* BrowserViewController.m */,
+				E407EFC114168A990091B02F /* AirLoggerAppDelegate.h */,
+				E407EFC214168A990091B02F /* AirLoggerAppDelegate.mm */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		E407EFB914168A990091B02F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E497ADE81467119B00FB43C1 /* en.lproj */,
+				E407EFBA14168A990091B02F /* AirLogger-Info.plist */,
+				E407EFBE14168A990091B02F /* main.m */,
+				E407EFC014168A990091B02F /* AirLogger-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		E407F0421416990F0091B02F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E43FF38E1417597300B9F8F3 /* backNavArrowButton.png */,
+				E407F043141699220091B02F /* sound.caf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		E497ADE81467119B00FB43C1 /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				E497ADE91467119B00FB43C1 /* InfoPlist.strings */,
+			);
+			path = en.lproj;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E407EFAD14168A980091B02F /* AirLogger */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E407EFD314168A990091B02F /* Build configuration list for PBXNativeTarget "AirLogger" */;
+			buildPhases = (
+				E407EFAA14168A980091B02F /* Sources */,
+				E407EFAB14168A980091B02F /* Frameworks */,
+				E407EFAC14168A980091B02F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AirLogger;
+			productName = ASLMuticaster;
+			productReference = E407EFAE14168A980091B02F /* AirLogger.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E407EFA514168A980091B02F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = E407EFA814168A980091B02F /* Build configuration list for PBXProject "AirLogger" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E407EFA314168A980091B02F;
+			productRefGroup = E407EFAF14168A980091B02F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E407EFAD14168A980091B02F /* AirLogger */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E407EFAC14168A980091B02F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E407F044141699220091B02F /* sound.caf in Resources */,
+				E43FF38F1417597300B9F8F3 /* backNavArrowButton.png in Resources */,
+				E497ADED1467119B00FB43C1 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E407EFAA14168A980091B02F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E407EFBF14168A990091B02F /* main.m in Sources */,
+				E407EFC314168A990091B02F /* AirLoggerAppDelegate.mm in Sources */,
+				E497ADD71464557300FB43C1 /* BrowserViewController.m in Sources */,
+				E497ADDA1464567200FB43C1 /* Picker.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E497ADE91467119B00FB43C1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E497ADEA1467119B00FB43C1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E407EFD114168A990091B02F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "$(SOURCE_ROOT)/ThirdParty/Neptune/Source/Core/**";
+			};
+			name = Debug;
+		};
+		E407EFD214168A990091B02F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "$(SOURCE_ROOT)/ThirdParty/Neptune/Source/Core/**";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E407EFD414168A990091B02F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Classes/AirLogger-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INFOPLIST_FILE = "AirLogger-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E407EFD514168A990091B02F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Classes/AirLogger-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INFOPLIST_FILE = "AirLogger-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E407EFA814168A980091B02F /* Build configuration list for PBXProject "AirLogger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E407EFD114168A990091B02F /* Debug */,
+				E407EFD214168A990091B02F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E407EFD314168A990091B02F /* Build configuration list for PBXNativeTarget "AirLogger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E407EFD414168A990091B02F /* Debug */,
+				E407EFD514168A990091B02F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E407EFA514168A980091B02F /* Project object */;
+}
