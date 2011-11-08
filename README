@@ -60,7 +60,6 @@ messages to all connected clients. Clients can choose to unsubscribe from the
 "all" channel if they so choose. Also upon connection, each client will receive
 a message on the "debug" message channel notifying them that they have connected
 to the server.
-
   
 USAGE
 =====
@@ -97,7 +96,6 @@ Open a new terminal and type:
 > subscribe <facility>
 
 Where <facility> is typically your app bundle id.
-
 
 EXTRA
 =====
