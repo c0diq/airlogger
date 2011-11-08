@@ -3,7 +3,7 @@
 |   AirLogger - main.m
 |
 | Created by Sylvain Rebaud on 9/6/11.
-| Copyright (c) 2006-2011, Plutinosoft, LLC.
+| Copyright (c) 2006-2011, MOG, Inc.
 | All rights reserved.
 |
 | Redistribution and use in source and binary forms, with or without
@@ -13,14 +13,14 @@
 |     * Redistributions in binary form must reproduce the above copyright
 |       notice, this list of conditions and the following disclaimer in the
 |       documentation and/or other materials provided with the distribution.
-|     * Neither the name of Plutinosoft nor the
+|     * Neither the name of MOG nor the
 |       names of its contributors may be used to endorse or promote products
 |       derived from this software without specific prior written permission.
 |
-| THIS SOFTWARE IS PROVIDED BY PLUTINOSOFT ''AS IS'' AND ANY
+| THIS SOFTWARE IS PROVIDED BY MOG ''AS IS'' AND ANY
 | EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 | WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-| DISCLAIMED. IN NO EVENT SHALL PLUTINOSOFT BE LIABLE FOR ANY
+| DISCLAIMED. IN NO EVENT SHALL MOG BE LIABLE FOR ANY
 | DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
 | (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
 | LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
@@ -35,7 +35,7 @@
 int main(int argc, char *argv[])
 {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    int retVal = UIApplicationMain(argc, argv, nil, @"AirLoggerDelegate");
+    int retVal = UIApplicationMain(argc, argv, nil, @"AirLoggerAppDelegate");
     [pool release];
     return retVal;
 }

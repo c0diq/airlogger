@@ -3,7 +3,7 @@ AirLogger - A simple remote console log viewer for node.js (server) and iOS (cli
 
 MOTIVATION
 ==========
-I needed a way to debug iOS apps while connected to a USB accessory or video out display.
+At MOG, I needed a way to debug iOS apps while connected to a USB accessory or video out display.
 In this situation, it's not possible to debug an app or accessing the device console. 
 The only choice is to disconnect the device from the accessory and connect it 
 back to the computer to analyze the console log which is very time consuming.
@@ -12,16 +12,15 @@ The idea here is to have a background app (AirLogger) that fetches console log e
 in real time over WiFi to another machine while the device stays connected to the accessory
 with the monitored app running in the foreground.
 
-AirLogger leverages a robust and scalable event-driven message fanout server for node.js written by @jazzchad
-https://github.com/c0diq/fanout.node.js
-
 OVERVIEW
 ========
 
 The system consists of 2 components:
 
 - A Server to receive log entries from clients. 
-I chose a leverage a simple and robust pubsub fanout messaging server for node.js written by @jazzchad.
+I chose a leverage a simple and robust pubsub fanout messaging server for node.js written by @jazzychad
+https://github.com/c0diq/fanout.node.js
+
 Since I didn't want to have to enter the IP address of the server in the client, 
 I've also added Bonjour announcement using node_mdns for node.js by @agnat
 https://github.com/agnat/node_mdns
