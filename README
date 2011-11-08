@@ -1,0 +1,108 @@
+
+AirLogger - A simple remote console log viewer for node.js (server) and iOS (client) by @c0diq
+
+MOTIVATION
+==========
+I needed a way to debug iOS apps while connected to a USB accessory or video out display.
+In this situation, it's not possible to debug an app or accessing the device console. 
+The only choice is to disconnect the device from the accessory and connect it 
+back to the computer to analyze the console log which is very time consuming.
+
+The idea here is to have a background app (AirLogger) that fetches console log entries and send them
+in real time over WiFi to another machine while the device stays connected to the accessory
+with the monitored app running in the foreground.
+
+AirLogger leverages a robust and scalable event-driven message fanout server for node.js written by @jazzchad
+
+OVERVIEW
+========
+
+The system consists of 2 components:
+
+- A Server to receive log entries from clients. 
+I chose a leverage a simple and robust pubsub fanout messaging server for node.js written by @jazzchad.
+Since I didn't want to have to enter the IP address of the server, I've added Bonjour announcement using
+node_mdns for node.js by ...
+
+- A Client iOS app that runs in the background and uses ASL C functions to access
+the iOS console log entries. Interestingly these are public APIs. As you know, a vanilla iOS app
+can run in the background in iOS4 and above for only up to 10 minutes. For more time, 
+a trick used here is to pretend to need background audio and play silence.
+DISCLAIMER: This will not be approved by Apple. Don't try to submit your app with this trick. 
+
+SETUP
+=====
+
+The airlogger fanout pubsub system consists of three parts
+ o The "airlogger server" itself
+ o One or more "Clients" (message subscribers/publishers)
+
+The airlogger server is run as a node.js process. Clients connect to the server on
+the client port (default 1986).
+
+Clients can do 5 (five) things:
+ o Subscribe to message channels
+ o Unsubscribe from message channels
+ o Receive messages on subscribed message channels
+ o Ping the fanout server for the current unix millitime
+ o Send (publish) messages on message channels
+
+Upon connection, each Client is automatically subscribed to the "all" message
+channel, so that if another Client publishes a message to the "all" message
+channel, each Client will receive it. This is useful for sending system-wide
+messages to all connected clients. Clients can choose to unsubscribe from the
+"all" channel if they so choose. Also upon connection, each client will receive
+a message on the "debug" message channel notifying them that they have connected
+to the server.
+
+  
+USAGE
+=====
+
+Assuming you have installed node.js on your machine/server, all you need 
+is this:
+
+  node Server/airlogger.js
+
+Alternatively, you can install airlogger using npm:
+
+  npm install airlogger
+
+NOTE:
+Using npm will take care of installing all the dependencies (fanout, mdns, winston)
+
+To start sending log entries, open the AirLogger.xcodeproj in XCode and deploy to your iOS device
+The App starts looking for _airlogger._tcp mdns services on the network.
+
+If your iOS device and airlogger server machine are on the same network, the server
+should appear in the list of available servers. All console log entries will
+immediately be sent to the selected server.
+
+You can then background the AirLogger app and launch the app you want to monitor.
+
+Log entries are sent by the iOS client using the following format:
+<facility> <Message>
+
+Thus if you're interested in filtering out only certain messages (your app typically),
+identify the facility name and do the following:
+
+Open a new terminal and type:
+> netcat localhost 1986
+> subscribe <facility>
+
+Where <facility> is typically your app bundle id.
+
+
+EXTRA
+=====
+
+You want to write your own client? No problems.
+All you need to do is open a tcp connection to the airlogger server and start
+publishing messages in the following format:
+
+  <facility><space><message><newline>
+  
+Connection from web browsers can be accomplished by using 
+the TCPSocket abstraction in the Orbited.org project.
+
+
