@@ -13,6 +13,7 @@ in real time over WiFi to another machine while the device stays connected to th
 with the monitored app running in the foreground.
 
 AirLogger leverages a robust and scalable event-driven message fanout server for node.js written by @jazzchad
+https://github.com/c0diq/fanout.node.js
 
 OVERVIEW
 ========
@@ -21,14 +22,19 @@ The system consists of 2 components:
 
 - A Server to receive log entries from clients. 
 I chose a leverage a simple and robust pubsub fanout messaging server for node.js written by @jazzchad.
-Since I didn't want to have to enter the IP address of the server, I've added Bonjour announcement using
-node_mdns for node.js by ...
+Since I didn't want to have to enter the IP address of the server in the client, 
+I've also added Bonjour announcement using node_mdns for node.js by @agnat
+https://github.com/agnat/node_mdns
 
 - A Client iOS app that runs in the background and uses ASL C functions to access
 the iOS console log entries. Interestingly these are public APIs. As you know, a vanilla iOS app
 can run in the background in iOS4 and above for only up to 10 minutes. For more time, 
 a trick used here is to pretend to need background audio and play silence.
 DISCLAIMER: This will not be approved by Apple. Don't try to submit your app with this trick. 
+
+[The original fanout server separated clients (subscribers) from controllers (publishers). This version
+doesn't differentiate the two different types. All clients can publish and subscribe in the airlogger model.
+This allows a client to not only send logs but in the future, receives commands as well.]
 
 SETUP
 =====
