@@ -1,10 +1,34 @@
-//
-//  AirLoggerAppDelegate.m
-//  AirLogger
-//
-//  Created by Sylvain Rebaud on 9/6/11.
-//  Copyright 2011 Plutinosoft. All rights reserved.
-//
+/*****************************************************************
+|
+|   AirLogger - AirLoggerAppDelegate.m
+|
+| Created by Sylvain Rebaud on 9/6/11.
+| Copyright (c) 2006-2011, Plutinosoft, LLC.
+| All rights reserved.
+|
+| Redistribution and use in source and binary forms, with or without
+| modification, are permitted provided that the following conditions are met:
+|     * Redistributions of source code must retain the above copyright
+|       notice, this list of conditions and the following disclaimer.
+|     * Redistributions in binary form must reproduce the above copyright
+|       notice, this list of conditions and the following disclaimer in the
+|       documentation and/or other materials provided with the distribution.
+|     * Neither the name of Plutinosoft nor the
+|       names of its contributors may be used to endorse or promote products
+|       derived from this software without specific prior written permission.
+|
+| THIS SOFTWARE IS PROVIDED BY PLUTINOSOFT ''AS IS'' AND ANY
+| EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+| WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+| DISCLAIMED. IN NO EVENT SHALL PLUTINOSOFT BE LIABLE FOR ANY
+| DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+| (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+| LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+| ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+| (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+| SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+|
+****************************************************************/
 
 #import "AirLoggerAppDelegate.h"
 #import <AudioToolbox/AudioToolbox.h>
@@ -18,6 +42,7 @@
 
 - (void)_showAlert:(NSString *)title
 {
+    // TODO: Use a local notification instead since we're in the background most likely when this happens
 	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:@"Check your networking configuration." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 	[alertView show];
 	[alertView release];
@@ -53,9 +78,9 @@
 
 - (void)startSilencePlayback {
     // create a player that will play silence in a loop to force WiFi to stay on
-    // even when phone goes to sleep!    
+    // even when phone goes to sleep!   
     AudioSessionSetActive(YES);
-    player.numberOfLoops = -1; // indefinite looping
+    player.numberOfLoops = -1; // infinite looping
     [player play];
 }
 
@@ -70,7 +95,7 @@
     [self setupAudioSession];
     [self startSilencePlayback];
     
-	//Create a full-screen window
+	// create a full-screen window
 	_window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	[_window setBackgroundColor:[UIColor darkGrayColor]];
     
@@ -78,7 +103,7 @@
     _picker.delegate = self;
     [_window addSubview:_picker];
     
-    //Show the window
+    // show the window
 	[_window makeKeyAndVisible];
 
     return YES;
@@ -123,6 +148,8 @@
 - (void) connect:(NSNetService*)service {
     [self setup:NO];
     
+    // in case we're still broadcasting (background thread), wait unil it's done
+    // by retrying in a bit
     if (_broadcasting) {
         [self performSelector:@selector(connect:) withObject:service afterDelay:0.3f];
         return;
@@ -142,36 +169,6 @@
 	[self connect:netService];
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application
-{
-    /*
-     Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-     Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-     */
-}
-
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-    /*
-     Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-     If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-     */
-}
-
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-    /*
-     Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-     */
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    /*
-     Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-     */
-}
-
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     /*
@@ -182,7 +179,7 @@
     [self stopSilencePlayback];
 }
 
-- (NSArray*)fetchLog:(NSMutableDictionary*)oldEntries {
+- (NSArray*)fetchLog:(NSMutableDictionary*)oldEntries sender:(NSString*)sender{
     aslmsg q, m;
     int i;
     const char *key, *val;
@@ -192,7 +189,9 @@
     NSMutableArray* logs = [NSMutableArray arrayWithCapacity:200];
     
     q = asl_new(ASL_TYPE_QUERY);
-    //asl_set_query(q, ASL_KEY_SENDER, "mog", ASL_QUERY_OP_EQUAL);
+    if (sender) {
+        asl_set_query(q, ASL_KEY_SENDER, "mog", ASL_QUERY_OP_EQUAL); // I think it's a sql equivalent to like %s%
+    }
     
     aslresponse r = asl_search(NULL, q);
     while (NULL != (m = aslresponse_next(r)))
@@ -244,20 +243,23 @@
     return logs;
 }
 
-- (void)sendMessage:(NSString*)message fromFacility:(NSString*)facility {
+- (void)sendMessage:(NSString*)message withFacility:(NSString*)facility {
     if (!message) return;
     
     if (_outStream && _outReady) {
+        // create a fanout message using the facility as the channel so clients can filter on it
         NSString* fanout = [NSString stringWithFormat:@"announce %@ %@\n", facility, message];
         NSData* data = [fanout dataUsingEncoding:NSUTF8StringEncoding];
+        
         NSUInteger written = 0;
         while (data.length != written) {
             written = [_outStream write:(const uint8_t *)data.bytes+written
                               maxLength:data.length-written];
+            // bail out on failure
             if (written == -1) {
                 _outReady = NO;
                 return;
-        }
+            }
         }
     }
 }
@@ -265,7 +267,7 @@
 - (void)sendMessages:(NSArray*)logEntries {
     for (NSDictionary* logEntry in logEntries) {
         [self sendMessage:[logEntry objectForKey:@"Message"] 
-               fromFacility:[logEntry objectForKey:@"Facility"]];
+               withFacility:[logEntry objectForKey:@"Facility"]];
     }
 }
 
@@ -274,9 +276,12 @@
     
     NSMutableDictionary* _oldEntries = [NSMutableDictionary dictionary];
     
-    while (1) {                                            
-        NSArray* logEntries = [self fetchLog:_oldEntries];
+    while (1) {   
+        // get new log entries and keep around in _oldEntries what we've seen so far
+        NSArray* logEntries = [self fetchLog:_oldEntries sender:nil];
         [self sendMessages:logEntries];
+        
+        // if aborted, bail out now
         if (!_outReady) 
             break;
         usleep(300000);
@@ -331,6 +336,7 @@
 			
 		case NSStreamEventEndEncountered:
 		{
+            // TODO: Use a local notification instead since we're in the background most likely when this happens
 			alertView = [[UIAlertView alloc] initWithTitle:@"Server Disconnected!" 
                                                    message:nil 
                                                   delegate:self 

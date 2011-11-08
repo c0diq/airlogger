@@ -1,10 +1,34 @@
-//
-//  BrowserViewController.m
-//  AirLogger
-//
-//  Created by Sylvain Rebaud on 9/6/11.
-//  Copyright 2011 Plutinosoft. All rights reserved.
-//
+/*****************************************************************
+|
+|   AirLogger - BrowserViewController.m
+|
+| Created by Sylvain Rebaud on 9/6/11.
+| Copyright (c) 2006-2011, Plutinosoft, LLC.
+| All rights reserved.
+|
+| Redistribution and use in source and binary forms, with or without
+| modification, are permitted provided that the following conditions are met:
+|     * Redistributions of source code must retain the above copyright
+|       notice, this list of conditions and the following disclaimer.
+|     * Redistributions in binary form must reproduce the above copyright
+|       notice, this list of conditions and the following disclaimer in the
+|       documentation and/or other materials provided with the distribution.
+|     * Neither the name of Plutinosoft nor the
+|       names of its contributors may be used to endorse or promote products
+|       derived from this software without specific prior written permission.
+|
+| THIS SOFTWARE IS PROVIDED BY PLUTINOSOFT ''AS IS'' AND ANY
+| EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+| WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+| DISCLAIMED. IN NO EVENT SHALL PLUTINOSOFT BE LIABLE FOR ANY
+| DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+| (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+| LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+| ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+| (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+| SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+|
+****************************************************************/
 
 /*
  Abstract: View controller for the service instance list.
@@ -15,6 +39,8 @@
  When a service goes away, the corresponding NSNetService is removed from the array.
  When an an item is selected, the delegate is called with the corresponding resolved NSNetService.
  */
+
+//TODO: Make it editable to users can enter an IP:PORT address 
 
 #import "BrowserViewController.h"
 
