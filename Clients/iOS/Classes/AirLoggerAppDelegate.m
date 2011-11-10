@@ -240,6 +240,7 @@
         [logs addObject:logEntry];
     }
     aslresponse_free(r);
+    asl_free(q);
     return logs;
 }
 
