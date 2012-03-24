@@ -16,5 +16,5 @@ try {
     process.exit(1);
 }
 
-var ad = mdns.createAdvertisement('airlogger', 1986);
+var ad = mdns.createAdvertisement(mdns.tcp('airlogger'), 1986);
 ad.start();
